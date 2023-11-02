@@ -1,6 +1,7 @@
 #include "GameScene.h"
 #include "TextureManager.h"
 #include <cassert>
+#include"PlayScene.h"
 
 GameScene::GameScene() {}
 
@@ -11,9 +12,11 @@ void GameScene::Initialize() {
 	dxCommon_ = DirectXCommon::GetInstance();
 	input_ = Input::GetInstance();
 	audio_ = Audio::GetInstance();
+
+	play->Initialize();
 }
 
-void GameScene::Update() {}
+void GameScene::Update() { play->Update(); }
 
 void GameScene::Draw() {
 
@@ -27,6 +30,7 @@ void GameScene::Draw() {
 	/// <summary>
 	/// ここに背景スプライトの描画処理を追加できる
 	/// </summary>
+	play->Draw2d();
 
 	// スプライト描画後処理
 	Sprite::PostDraw();
@@ -41,6 +45,7 @@ void GameScene::Draw() {
 	/// <summary>
 	/// ここに3Dオブジェクトの描画処理を追加できる
 	/// </summary>
+	play->Draw3d();
 
 	// 3Dオブジェクト描画後処理
 	Model::PostDraw();

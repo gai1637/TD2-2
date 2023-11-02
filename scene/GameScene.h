@@ -12,6 +12,7 @@
 /// <summary>
 /// ゲームシーン
 /// </summary>
+class PlayScene;
 class GameScene {
 
 public: // メンバ関数
@@ -45,6 +46,8 @@ private: // メンバ変数
 	Input* input_ = nullptr;
 	Audio* audio_ = nullptr;
 
+
+	std::unique_ptr<PlayScene> play;
 	/// <summary>
 	/// ゲームシーン用
 	/// </summary>

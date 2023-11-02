@@ -12,10 +12,16 @@ enum class Scene {
 	Select,
 	Game,
 };
+class Title;
+class StageSelect;
+class Game;
 class PlayScene {
 private:
 	Scene scene = Scene::Title;
 	static void (PlayScene::*pFuncTable[])();
+	std::unique_ptr<Game> game;
+	std::unique_ptr<Title> title;
+	std::unique_ptr<StageSelect> select;
 
 public:
 	/// <summary>
@@ -29,9 +35,14 @@ public:
 	void Update();
 
 	/// <summary>
-	/// •`‰æ
+	/// ‚QD•`‰æ
 	/// </summary>
-	void Draw();
+	void Draw2d();
+	/// <summary>
+	/// ‚RD•`‰æ
+	/// </summary>
+	void Draw3d();
+
 	/// <summary>
 	/// ƒ^ƒCƒgƒ‹
 	/// </summary>
