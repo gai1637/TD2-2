@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 #include "Audio.h"
 #include "AxisIndicator.h"
 #include "DirectXCommon.h"
@@ -7,52 +7,54 @@
 #include "PrimitiveDrawer.h"
 #include "TextureManager.h"
 #include "WinApp.h"
+#include<memory>
 enum class Scene {
-	Title,
-	Select,
-	Game,
+	title,
+	select,
+	game,
 };
 class Title;
 class StageSelect;
 class Game;
 class PlayScene {
 private:
-	Scene scene = Scene::Title;
+	Scene scene = Scene::title;
 	static void (PlayScene::*pFuncTable[])();
-	std::unique_ptr<Game> game;
-	std::unique_ptr<Title> title;
-	std::unique_ptr<StageSelect> select;
+	Game* game;
+	Title* title;
+	StageSelect* select;
 
 public:
+	~PlayScene();
 	/// <summary>
-	/// ‰Šú‰»
+	/// åˆæœŸåŒ–
 	/// </summary>
 	void Initialize();
 
 	/// <summary>
-	/// –ˆƒtƒŒ[ƒ€ˆ—
+	/// æ¯ãƒ•ãƒ¬ãƒ¼ãƒ å‡¦ç†
 	/// </summary>
 	void Update();
 
 	/// <summary>
-	/// ‚QD•`‰æ
+	/// ï¼’Dæç”»
 	/// </summary>
 	void Draw2d();
 	/// <summary>
-	/// ‚RD•`‰æ
+	/// ï¼“Dæç”»
 	/// </summary>
 	void Draw3d();
 
 	/// <summary>
-	/// ƒ^ƒCƒgƒ‹
+	/// ã‚¿ã‚¤ãƒˆãƒ«
 	/// </summary>
-	void Title();
+	void TitleF();
 	/// <summary>
-	/// ƒXƒe[ƒW‘I‘ğ
+	/// ã‚¹ãƒ†ãƒ¼ã‚¸é¸æŠ
 	/// </summary>
-	void Select();
+	void SelectF();
 	/// <summary>
-	/// ƒQ[ƒ€
+	/// ã‚²ãƒ¼ãƒ 
 	/// </summary>
-	void Game();
+	void GameF();
 };

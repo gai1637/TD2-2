@@ -1,36 +1,45 @@
-#include "PlayScene.h"
+ï»¿#include "PlayScene.h"
 #include"Game.h"
 #include"Title.h"
 #include"StageSelect.h"
+PlayScene::~PlayScene() { 
+	delete select;
+	delete game;
+	delete title;
+}
 void (PlayScene::*PlayScene::pFuncTable[])() = {
-	&PlayScene::Title,
-	&PlayScene::Select,
-	&PlayScene::Game
+	&PlayScene::TitleF,
+	&PlayScene::SelectF,
+	&PlayScene::GameF
 };
-//‰Šú‰»A
+//åˆæœŸåŒ–ã€
 void PlayScene::Initialize() {
-
+	game = new Game;
 	game->Initialize();
+	
+	title = new Title;
 	title->Initialize();
+
+	select= new StageSelect;
 	select->Initialize();
 }
-    //ƒAƒbƒvƒf[ƒgA‚±‚±‚É‚Í‚±‚êˆÈŠO‘‚©‚È‚¢‚±‚Æ
+    //ã‚¢ãƒƒãƒ—ãƒ‡ãƒ¼ãƒˆã€ã“ã“ã«ã¯ã“ã‚Œä»¥å¤–æ›¸ã‹ãªã„ã“ã¨
 void PlayScene::Update() { 
 	(this->*pFuncTable[static_cast<size_t>(scene)])(); 
 }
-//ƒ^ƒCƒgƒ‹ˆ—
-void PlayScene::Title() { title->Update(); }
-//ƒXƒe[ƒWƒZƒŒƒNƒg‚Ìˆ—
-void PlayScene::Select() { select->Update(); }
-//ƒQ[ƒ€–{‘Ì‚Ìˆ—
-void PlayScene::Game() { game->Update(); }
+//ã‚¿ã‚¤ãƒˆãƒ«å‡¦ç†
+void PlayScene::TitleF() { title->Update(); }
+//ã‚¹ãƒ†ãƒ¼ã‚¸ã‚»ãƒ¬ã‚¯ãƒˆã®å‡¦ç†
+void PlayScene::SelectF() { select->Update(); }
+//ã‚²ãƒ¼ãƒ æœ¬ä½“ã®å‡¦ç†
+void PlayScene::GameF() { game->Update(); }
 
-// ‚QD•`‰æ
+// ï¼’Dæç”»
 void PlayScene::Draw2d() {
 
 }
 
-///‚RD•`‰æ
+///ï¼“Dæç”»
 
 void PlayScene::Draw3d() {
 

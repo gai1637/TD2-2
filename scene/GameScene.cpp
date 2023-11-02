@@ -12,7 +12,7 @@ void GameScene::Initialize() {
 	dxCommon_ = DirectXCommon::GetInstance();
 	input_ = Input::GetInstance();
 	audio_ = Audio::GetInstance();
-
+	play = std::make_unique<PlayScene>();
 	play->Initialize();
 }
 
