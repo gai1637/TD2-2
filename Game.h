@@ -7,16 +7,9 @@
 #include "PrimitiveDrawer.h"
 #include "TextureManager.h"
 #include "WinApp.h"
-#include "ViewProjection.h"
-#include "WorldTransform.h"
-#include<memory>
-class Map;
-const int mapwide = 10;
-const int maphigh = 5;
 class Game {
 private:
-	std::list<Map*> maps; 
-	int mapmain[maphigh][mapwide];
+
 
 public:
 	/// <summary>
@@ -32,5 +25,5 @@ public:
 	/// <summary>
 	/// 描画
 	/// </summary>
-	void Draw(const ViewProjection& viewprojection);
+	void Draw();
 };

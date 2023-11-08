@@ -48,7 +48,6 @@ private: // メンバ変数
 
 
 	std::unique_ptr<PlayScene> play;
-	ViewProjection viewProjection_;
 	/// <summary>
 	/// ゲームシーン用
 	/// </summary>

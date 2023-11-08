@@ -14,17 +14,9 @@ void GameScene::Initialize() {
 	audio_ = Audio::GetInstance();
 	play = std::make_unique<PlayScene>();
 	play->Initialize();
-	viewProjection_.translation_.y = 1;
-	viewProjection_.translation_.z = -6;
-	viewProjection_.Initialize();
 }
 
-void GameScene::Update() { 
-	play->Update(); 
-	
-	viewProjection_.Initialize();
-
-}
+void GameScene::Update() { play->Update(); }
 
 void GameScene::Draw() {
 
@@ -53,7 +45,7 @@ void GameScene::Draw() {
 	/// <summary>
 	/// ここに3Dオブジェクトの描画処理を追加できる
 	/// </summary>
-	play->Draw3d(viewProjection_);
+	play->Draw3d();
 
 	// 3Dオブジェクト描画後処理
 	Model::PostDraw();

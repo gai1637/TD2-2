@@ -51,13 +51,6 @@ public:
 	/// </summary>
 	/// <returns>定数バッファ</returns>
 	const Microsoft::WRL::ComPtr<ID3D12Resource>& GetConstBuffer() const { return constBuffer_; }
-	// アフィン変換行列の作成
-	Matrix4x4 MakeAffineMatrix(const Vector3& scale, const Vector3& rot, const Vector3& translate);
-
-
-	void UpdateMatrix();
-
-	
 
 private:
 	// 定数バッファ
