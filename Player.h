@@ -1,24 +1,20 @@
 ﻿#pragma once
 #include "Audio.h"
-#include "AxisIndicator.h"
 #include "DirectXCommon.h"
-#include "GameScene.h"
-#include "ImGuiManager.h"
-#include "PrimitiveDrawer.h"
-#include "TextureManager.h"
-#include "WinApp.h"
+#include "Input.h"
+#include "Model.h"
+#include "SafeDelete.h"
+#include "Sprite.h"
 #include "ViewProjection.h"
 #include "WorldTransform.h"
-#include<memory>
-class Map;
-const int mapwide = 10;
-const int maphigh = 5;
-class Game {
-private:
-	std::list<Map*> maps; 
-	int mapmain[maphigh][mapwide];
-
+class Player {
 public:
+	WorldTransform worldtransform_;
+	ViewProjection viewprojection;
+
+
+
+private:
 	/// <summary>
 	/// 初期化
 	/// </summary>
@@ -33,4 +29,6 @@ public:
 	/// 描画
 	/// </summary>
 	void Draw(const ViewProjection& viewprojection);
+
+
 };

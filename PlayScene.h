@@ -7,6 +7,7 @@
 #include "PrimitiveDrawer.h"
 #include "TextureManager.h"
 #include "WinApp.h"
+#include "ViewProjection.h"
 #include<memory>
 enum class Scene {
 	title,
@@ -18,7 +19,7 @@ class StageSelect;
 class Game;
 class PlayScene {
 private:
-	Scene scene = Scene::title;
+	Scene scene = Scene::game;
 	static void (PlayScene::*pFuncTable[])();
 	Game* game;
 	Title* title;
@@ -43,7 +44,7 @@ public:
 	/// <summary>
 	/// ３D描画
 	/// </summary>
-	void Draw3d();
+	void Draw3d(const ViewProjection& viewprojection);
 
 	/// <summary>
 	/// タイトル
