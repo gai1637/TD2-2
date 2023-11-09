@@ -111,10 +111,13 @@
     <ClCompile Include="base\WinApp.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Map.cpp" />
+    <ClCompile Include="MathUtilityForText.cpp" />
     <ClCompile Include="PlayScene.cpp" />
     <ClCompile Include="scene\GameScene.cpp" />
     <ClCompile Include="StageSelect.cpp" />
     <ClCompile Include="Title.cpp" />
+    <ClCompile Include="WorldTransform.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="2d\ImGuiManager.h" />
@@ -142,6 +145,8 @@
     <ClInclude Include="base\WinApp.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="input\Input.h" />
+    <ClInclude Include="Map.h" />
+    <ClInclude Include="MathUtilityForText.h" />
     <ClInclude Include="math\Matrix4x4.h" />
     <ClInclude Include="math\Vector2.h" />
     <ClInclude Include="math\Vector3.h" />

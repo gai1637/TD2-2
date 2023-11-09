@@ -7,6 +7,7 @@
 #include "PrimitiveDrawer.h"
 #include "TextureManager.h"
 #include "WinApp.h"
+#include "ViewProjection.h"
 #include<memory>
 enum class Scene {
 	title,
@@ -43,7 +44,7 @@ public:
 	/// <summary>
 	/// ３D描画
 	/// </summary>
-	void Draw3d();
+	void Draw3d(const ViewProjection& viewProjection);
 
 	/// <summary>
 	/// タイトル

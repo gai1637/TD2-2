@@ -6,10 +6,15 @@
 #include "ImGuiManager.h"
 #include "PrimitiveDrawer.h"
 #include "TextureManager.h"
+#include"ViewProjection.h"
 #include "WinApp.h"
+class Map;
 class Game {
 private:
-
+	std::list<Map*> maps;
+	static const int mapwide=16;
+	static const int maphigh=9;
+	int mapmain1[maphigh][mapwide];
 
 public:
 	/// <summary>
@@ -25,5 +30,5 @@ public:
 	/// <summary>
 	/// 描画
 	/// </summary>
-	void Draw();
+	void Draw(const ViewProjection& viewProjection);
 };
