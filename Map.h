@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 #include "Audio.h"
 #include "DirectXCommon.h"
 #include "Input.h"
@@ -9,27 +9,27 @@
 #include "WorldTransform.h"
 #include<memory>
 class Map {
-public:
+private:
 	int a_;
 	WorldTransform worldtransform_;
 	ViewProjection viewprojection_;
 	uint32_t textureHandle_;
 	Model* model_;
 
-private:
+public:
 	~Map();
 	/// <summary>
-	/// ‰Šú‰»
+	/// åˆæœŸåŒ–
 	/// </summary>
 	void Initialize(int a,int b,int c,int d);
 
 	/// <summary>
-	/// –ˆƒtƒŒ[ƒ€ˆ—
+	/// æ¯ãƒ•ãƒ¬ãƒ¼ãƒ å‡¦ç†
 	/// </summary>
 	void Update();
 
 	/// <summary>
-	/// •`‰æ
+	/// æç”»
 	/// </summary>
 	void Draw(const ViewProjection& viewprojection);
 };

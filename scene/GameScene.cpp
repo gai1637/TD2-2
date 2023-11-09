@@ -14,13 +14,34 @@ void GameScene::Initialize() {
 	audio_ = Audio::GetInstance();
 	play = std::make_unique<PlayScene>();
 	play->Initialize();
+
 	viewProjection_.translation_.y = 1;
 	viewProjection_.translation_.z = -6;
 	viewProjection_.Initialize();
 	
 }
 
-void GameScene::Update() { play->Update(); }
+void GameScene::Update() { 
+	play->Update(); 
+if (input_->PushKey(DIK_W)) {
+		viewProjection_.translation_.y+=0.5f;
+	}
+if (input_->PushKey(DIK_A)) {
+		viewProjection_.translation_.x-=0.5f;
+	}
+if (input_->PushKey(DIK_S)) {
+		viewProjection_.translation_.y-=0.5f;
+	}
+if (input_->PushKey(DIK_D)) {
+		viewProjection_.translation_.x+=0.5f;
+	}
+if (input_->PushKey(DIK_SPACE)) {
+		viewProjection_.translation_.z -= 0.5;
+	}
+		viewProjection_.UpdateMatrix();
+
+
+}
 
 void GameScene::Draw() {
 

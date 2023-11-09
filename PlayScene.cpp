@@ -3,9 +3,9 @@
 #include"Title.h"
 #include"StageSelect.h"
 PlayScene::~PlayScene() { 
-	delete select;
+	/*delete select;*/
 	delete game;
-	delete title;
+	/*delete title;*/
 }
 void (PlayScene::*PlayScene::pFuncTable[])() = {
 	&PlayScene::TitleF,
@@ -17,20 +17,20 @@ void PlayScene::Initialize() {
 	game = new Game;
 	game->Initialize();
 	
-	title = new Title;
+	/*title = new Title;
 	title->Initialize();
 
 	select= new StageSelect;
-	select->Initialize();
+	select->Initialize();*/
 }
     //アップデート、ここにはこれ以外書かないこと
 void PlayScene::Update() { 
 	(this->*pFuncTable[static_cast<size_t>(scene)])(); 
 }
 //タイトル処理
-void PlayScene::TitleF() { title->Update(); }
+void PlayScene::TitleF() { /*title->Update();*/ }
 //ステージセレクトの処理
-void PlayScene::SelectF() { select->Update(); }
+void PlayScene::SelectF() {/* select->Update();*/ }
 //ゲーム本体の処理
 void PlayScene::GameF() { game->Update(); }
 
@@ -41,6 +41,5 @@ void PlayScene::Draw2d() {
 
 ///３D描画
 
-void PlayScene::Draw3d(const ViewProjection& viewProjection) {
-
-}
+void PlayScene::Draw3d(const ViewProjection& viewProjection) { 
+	game->Draw(viewProjection); }

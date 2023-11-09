@@ -19,11 +19,11 @@ class StageSelect;
 class Game;
 class PlayScene {
 private:
-	Scene scene = Scene::title;
+	Scene scene = Scene::game;
 	static void (PlayScene::*pFuncTable[])();
 	Game* game;
-	Title* title;
-	StageSelect* select;
+	/*Title* title;
+	StageSelect* select;*/
 
 public:
 	~PlayScene();
