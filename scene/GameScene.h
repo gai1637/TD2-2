@@ -8,6 +8,7 @@
 #include "Sprite.h"
 #include "ViewProjection.h"
 #include "WorldTransform.h"
+#include"ImGuiManager.h"
 #include<memory>
 /// <summary>
 /// ゲームシーン
@@ -40,6 +41,8 @@ public: // メンバ関数
 	/// 描画
 	/// </summary>
 	void Draw();
+
+
 
 private: // メンバ変数
 	DirectXCommon* dxCommon_ = nullptr;

@@ -32,4 +32,6 @@ public:
 	/// 描画
 	/// </summary>
 	void Draw(const ViewProjection& viewprojection);
+	Vector3 retunPos() { return worldtransform_.translation_; }
+	int retunA() { return a_; }
 };

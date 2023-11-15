@@ -14,32 +14,45 @@ void GameScene::Initialize() {
 	audio_ = Audio::GetInstance();
 	play = std::make_unique<PlayScene>();
 	play->Initialize();
-
-	viewProjection_.translation_.y = 1;
-	viewProjection_.translation_.z = -6;
+	viewProjection_.translation_.x = 0;
+	viewProjection_.translation_.y = -11;
+	viewProjection_.translation_.z = -60;
 	viewProjection_.Initialize();
 	
 }
 
 void GameScene::Update() { 
 	play->Update(); 
-if (input_->PushKey(DIK_W)) {
-		viewProjection_.translation_.y+=0.5f;
-	}
-if (input_->PushKey(DIK_A)) {
-		viewProjection_.translation_.x-=0.5f;
-	}
-if (input_->PushKey(DIK_S)) {
-		viewProjection_.translation_.y-=0.5f;
-	}
-if (input_->PushKey(DIK_D)) {
-		viewProjection_.translation_.x+=0.5f;
-	}
+//if (input_->PushKey(DIK_W)) {
+//		viewProjection_.translation_.y+=0.5f;
+//	}
+//if (input_->PushKey(DIK_A)) {
+//		viewProjection_.translation_.x-=0.5f;
+//	}
+//if (input_->PushKey(DIK_S)) {
+//		viewProjection_.translation_.y-=0.5f;
+//	}
+//if (input_->PushKey(DIK_D)) {
+//		viewProjection_.translation_.x+=0.5f;
+//	}
 if (input_->PushKey(DIK_SPACE)) {
 		viewProjection_.translation_.z -= 0.5;
 	}
-		viewProjection_.UpdateMatrix();
+if (input_->PushKey(DIK_UP)) {
+		viewProjection_.translation_.z ++;
+	}
+if (input_->PushKey(DIK_DOWN)) {
+		viewProjection_.translation_.z --;
 
+}
+		viewProjection_.UpdateMatrix();
+	ImGui::Begin("a");
+	ImGui::Text(
+	    "%f,%f,%f", viewProjection_.translation_.x, viewProjection_.translation_.y,
+	    viewProjection_.translation_.z
+
+	);
+	ImGui::End();
 
 }
 
@@ -83,6 +96,8 @@ void GameScene::Draw() {
 	/// <summary>
 	/// ここに前景スプライトの描画処理を追加できる
 	/// </summary>
+	
+
 
 	// スプライト描画後処理
 	Sprite::PostDraw();
