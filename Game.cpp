@@ -59,6 +59,8 @@ void Game::Collision() {
 
 			float dx = abs(player->retunPos().x - map->retunPos().x);
 			float dy = abs(player->retunPos().y - map->retunPos().y);
+			float dz = abs(player->retunPos().z - map->retunPos().z);
+			if (dz < 4) {
 			if (dx < 3 && dy < 4) {
 				while (dy < 4) {
 
@@ -82,6 +84,7 @@ void Game::Collision() {
 
 			}
 			
+			}
 		}
 	}
 }
