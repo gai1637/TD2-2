@@ -1,15 +1,19 @@
 ﻿#include "Game.h"
 #include"Map.h"
 #include"Player.h"
+#include"Map1.h"
 Game::~Game() { delete player; 
 for (Map* map : maps) {
 		delete map;
 	}
-
+delete map1;
 }
 void Game::Initialize() { 
+	stage = 0;
+map1 = new Map1;
 	for (int a = 0; a < maphigh; a++) {
 		for (int b = 0; b < mapwide; b++) {
+			mapmain1[a][b] = map1->map1[a][b];
 			if (mapmain1[a][b]!=0) {
 				Map* newmap = new Map();
 				newmap->Initialize(mapmain1[a][b], a, b, 0);
@@ -20,6 +24,7 @@ void Game::Initialize() {
 	}
 	for (int a = 0; a < maphigh; a++) {
 		for (int b = 0; b < mapwide; b++) {
+			mapmain2[a][b] = map1->map2[a][b];
 			if (mapmain2[a][b]!=0) {
 				Map* newmap = new Map();
 				newmap->Initialize(mapmain2[a][b], a, b, 60);
