@@ -38,7 +38,9 @@ public:
 	void PreMove();
 	Vector3 retunPos() { return prepos; }
 	void OnCollision();
-	void LRCollision();
+	void LCollision();
+	void RCollision();
+
 	/*void SetCollision(bool collision) { this->collision = collision; }*/
 
 };

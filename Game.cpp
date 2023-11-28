@@ -48,15 +48,27 @@ void Game::Collision() {
 
 			float dx = abs(player->retunPos().x - map->retunPos().x);
 			float dy = abs(player->retunPos().y - map->retunPos().y);
-			if (dx < 3 && dy < 3) {
-				
-				player->OnCollision();
-				
+			if (dx < 3 && dy < 4) {
+				while (dy < 4) {
+
+					player->OnCollision();
+					dy = abs(player->retunPos().y - map->retunPos().y);
+				}
 			}
-			if (dx < 3 && dy < 1) {
-				
-				player->LRCollision();
-				
+			if (dx < 4 && dy < 3) {
+				if (player->retunPos().x > map->retunPos().x) {
+
+					while (dx < 4) {
+						player->LCollision();
+						dx = abs(player->retunPos().x - map->retunPos().x);
+					}
+				} else {
+					while (dx < 4) {
+						player->RCollision();
+						dx = abs(player->retunPos().x - map->retunPos().x);
+					}
+				}
+
 			}
 			
 		}

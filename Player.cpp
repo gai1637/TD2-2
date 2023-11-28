@@ -7,6 +7,7 @@ Player::~Player() {
 void Player::Initialize() { 
 	textureHandle_ = TextureManager::Load("white1x1.png");
 	model_ = Model::Create();
+	worldtransform_.scale_ = {2.f, 2.f, 0};
 	worldtransform_.translation_ = {0, 5, 0};
 	worldtransform_.Initialize();
 	input_ = Input::GetInstance();
@@ -20,6 +21,10 @@ void Player::PreMove() {
 			speed_.x += 0.1f;
 		}
 
+	} else if (input_->PushKey(DIK_A)) {
+		if (speed_.x <= -1) {
+			speed_.x -= 0.1f;
+		}
 	} else {
 		speed_.x = 0;
 	}
@@ -45,18 +50,25 @@ void Player::Update() {
 }
 void Player::OnCollision() { 
 	
-	prepos.y = worldtransform_.translation_.y;
+	prepos.y +=0.1f;
 	speed_.y = 0;
 	
 	
 
 }
-void Player::LRCollision() { 
+void Player::LCollision() { 
 
-	prepos.x = worldtransform_.translation_.x;
+	prepos.x +=0.1f;
 	speed_.x = 0;
 
 }
+void Player::RCollision() { 
+
+	prepos.x -=0.1f;
+	speed_.x = 0;
+
+}
+
 void Player::Draw(const ViewProjection& viewProjection) {
 	model_->Draw(worldtransform_, viewProjection, textureHandle_);
 }
