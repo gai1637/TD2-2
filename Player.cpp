@@ -22,7 +22,7 @@ void Player::PreMove() {
 		}
 
 	} else if (input_->PushKey(DIK_A)) {
-		if (speed_.x <= -1) {
+		if (speed_.x >= -1) {
 			speed_.x -= 0.1f;
 		}
 	} else {
@@ -52,7 +52,7 @@ void Player::OnCollision() {
 	
 	prepos.y +=0.1f;
 	speed_.y = 0;
-	
+	junp = false;
 	
 
 }

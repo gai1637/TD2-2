@@ -44,7 +44,7 @@ public:
 	/// <summary>
 	/// ３D描画
 	/// </summary>
-	void Draw3d(const ViewProjection& viewProjection);
+	void Draw3d();
 
 	/// <summary>
 	/// タイトル

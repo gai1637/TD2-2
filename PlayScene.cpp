@@ -41,5 +41,5 @@ void PlayScene::Draw2d() {
 
 ///３D描画
 
-void PlayScene::Draw3d(const ViewProjection& viewProjection) { 
-	game->Draw(viewProjection); }
+void PlayScene::Draw3d() { 
+	game->Draw(); }

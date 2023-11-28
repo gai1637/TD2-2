@@ -5,6 +5,7 @@ Game::~Game() { delete player;
 for (Map* map : maps) {
 		delete map;
 	}
+
 }
 void Game::Initialize() { 
 	for (int a = 0; a < maphigh; a++) {
@@ -29,7 +30,10 @@ void Game::Initialize() {
 	}
 	player = new Player;
 	player->Initialize();
-
+	viewProjection_.translation_.x = 0;
+	viewProjection_.translation_.y = -11;
+	viewProjection_.translation_.z = -60;
+	viewProjection_.Initialize();
 }
 void Game::Update() { 
 	
@@ -39,7 +43,9 @@ void Game::Update() {
 	player->PreMove();
 	Collision();
 	player->Update();
-
+	viewProjection_.translation_.x = player->retunPos().x;
+	viewProjection_.translation_.z = player->retunPos().z - 60;
+	viewProjection_.UpdateMatrix();
 
 }
 void Game::Collision() {
@@ -74,9 +80,9 @@ void Game::Collision() {
 		}
 	}
 }
-void Game::Draw(const ViewProjection& viewProjection) { 
+void Game::Draw() { 
 	for (Map* map : maps) {
-		map->Draw(viewProjection);
+		map->Draw(viewProjection_);
 	}
-	player->Draw(viewProjection);
+	player->Draw(viewProjection_);
 }
