@@ -35,9 +35,7 @@ void PlayScene::SelectF() {/* select->Update();*/ }
 void PlayScene::GameF() { game->Update(); }
 
 // ２D描画
-void PlayScene::Draw2d() {
-
-}
+void PlayScene::Draw2d() { game->HaikeiDraw(); }
 
 ///３D描画
 

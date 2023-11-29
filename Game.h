@@ -22,6 +22,8 @@ private:
 	ViewProjection viewProjection_;
 	uint32_t stage;
 	Map1* map1;
+	uint32_t haikei=0;
+	Sprite* sprite_=nullptr;
 
 public:
 	~Game();
@@ -39,6 +41,6 @@ public:
 	/// 描画
 	/// </summary>
 	void Draw();
-
+	void HaikeiDraw();
 	void Collision();
 };

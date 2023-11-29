@@ -4,8 +4,12 @@ Map::~Map() { delete model_; }
 
 void Map::Initialize(int a, int b, int c, int d) { 
 	a_ = a;
-	if (a != 0) {
+	if (a ==1) {
 		textureHandle_ =TextureManager::Load("stone.png");
+		model_ = Model::Create();
+	}
+	if (a == 2) {
+	textureHandle_ =TextureManager::Load("goal.png");
 		model_ = Model::Create();
 	}
 	

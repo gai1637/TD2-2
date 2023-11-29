@@ -7,6 +7,7 @@ for (Map* map : maps) {
 		delete map;
 	}
 delete map1;
+	delete sprite_;
 }
 void Game::Initialize() { 
 	stage = 0;
@@ -39,6 +40,9 @@ map1 = new Map1;
 	viewProjection_.translation_.y = -11;
 	viewProjection_.translation_.z = -60;
 	viewProjection_.Initialize();
+	haikei = TextureManager::Load("haikei.png");
+	sprite_ = Sprite::Create(haikei, {0, 0});
+
 }
 void Game::Update() { 
 	
@@ -46,16 +50,19 @@ void Game::Update() {
 		map->Update();
 	} 
 	player->PreMove();
+	if (!player->ReturnGeat() && !player->Returngeat()) {
 	Collision();
+	}
+	
 	player->Update();
 	viewProjection_.translation_.x = player->retunPos().x;
 	viewProjection_.translation_.z = player->retunPos().z - 60;
 	viewProjection_.UpdateMatrix();
-
+	
 }
 void Game::Collision() {
 	for (Map* map : maps) {
-		if (map->retunA() == 1) {
+		if (map->retunA() !=0) {
 
 			float dx = abs(player->retunPos().x - map->retunPos().x);
 			float dy = abs(player->retunPos().y - map->retunPos().y);
@@ -94,3 +101,4 @@ void Game::Draw() {
 	}
 	player->Draw(viewProjection_);
 }
+void Game::HaikeiDraw() { sprite_->Draw(); }

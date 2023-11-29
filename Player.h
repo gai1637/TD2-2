@@ -18,6 +18,8 @@ private:
 	Input* input_;
 	Vector2 speed_;
 	bool junp;
+	bool geat;
+	bool Geat;
 
 public:
 	~Player();
@@ -40,6 +42,8 @@ public:
 	void OnCollision();
 	void LCollision();
 	void RCollision();
+	bool Returngeat() { return geat; }
+	bool ReturnGeat() { return Geat; }
 
 	/*void SetCollision(bool collision) { this->collision = collision; }*/
 
