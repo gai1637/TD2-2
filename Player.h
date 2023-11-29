@@ -44,6 +44,7 @@ public:
 	void RCollision();
 	bool Returngeat() { return geat; }
 	bool ReturnGeat() { return Geat; }
+	void PosReset();
 
 	/*void SetCollision(bool collision) { this->collision = collision; }*/
 

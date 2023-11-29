@@ -72,8 +72,7 @@ void Player::Update() {
 	worldtransform_.translation_.x = prepos.x;
 	worldtransform_.translation_.y = prepos.y;
 	if (worldtransform_.translation_.y <= -60) {
-	worldtransform_.translation_ = {0, 5, 0};
-		prepos = worldtransform_.translation_;
+		PosReset();
 	}
 	worldtransform_.UpdateMatrix();
 
@@ -99,7 +98,10 @@ void Player::RCollision() {
 	speed_.x = 0;
 
 }
-
+void Player::PosReset() {
+	worldtransform_.translation_ = {0, 5, 0};
+	prepos = worldtransform_.translation_;
+}
 void Player::Draw(const ViewProjection& viewProjection) {
 	model_->Draw(worldtransform_, viewProjection, textureHandle_);
 }

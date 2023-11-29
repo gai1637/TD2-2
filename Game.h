@@ -11,6 +11,7 @@
 class Map;
 class Player;
 class Map1;
+class Map2;
 class Game {
 private:
 	std::list<Map*> maps;
@@ -22,8 +23,10 @@ private:
 	ViewProjection viewProjection_;
 	uint32_t stage;
 	Map1* map1;
+	Map2* map2;
 	uint32_t haikei=0;
 	Sprite* sprite_=nullptr;
+	bool resetFalg;
 
 public:
 	~Game();
@@ -43,4 +46,5 @@ public:
 	void Draw();
 	void HaikeiDraw();
 	void Collision();
+	void MapReset();
 };
