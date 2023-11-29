@@ -20,6 +20,8 @@ private:
 	bool junp;
 	bool geat;
 	bool Geat;
+	uint32_t backpng;
+	uint32_t frontpng;
 
 public:
 	~Player();
@@ -40,6 +42,8 @@ public:
 	void PreMove();
 	Vector3 retunPos() { return prepos; }
 	void OnCollision();
+	void DCollision();
+
 	void LCollision();
 	void RCollision();
 	bool Returngeat() { return geat; }

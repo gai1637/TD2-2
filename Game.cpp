@@ -10,11 +10,14 @@ for (Map* map : maps) {
 delete map1;
 delete map2;
 delete sprite_;
+delete setumeisprite_;
+delete crearsprite_;
 }
 void Game::Initialize() { 
-	stage = 0;
+	stage = 2;
 map1 = new Map1;
 	map2 = new Map2;
+map3 = new Map3;
 	for (int a = 0; a < maphigh; a++) {
 		for (int b = 0; b < mapwide; b++) {
 			mapmain1[a][b] = map1->map1[a][b];
@@ -47,7 +50,15 @@ map1 = new Map1;
 	viewProjection_.Initialize();
 	haikei = TextureManager::Load("haikei.png");
 	sprite_ = Sprite::Create(haikei, {0, 0});
+	setumei = TextureManager::Load("setumei.png");
+	setumeisprite_ = Sprite::Create(setumei, {60, 10});
 	resetFalg = false;
+	audio_ = Audio::GetInstance();
+	soundDataHandle_ = audio_->LoadWave("africa.wav");
+	audio_->PlayWave(soundDataHandle_,true);
+	crearflag = false;
+	crearpng = TextureManager::Load("gameclear.png");
+	crearsprite_ = Sprite::Create(crearpng, {0, 0});
 }
 void Game::Update() { 
 	
@@ -92,9 +103,33 @@ void Game::Update() {
 		}
 	}
 	} else if(stage==3){
+	for (int a = 0; a < maphigh; a++) {
+			for (int b = 0; b < mapwide; b++) {
+				mapmain1[a][b] = map3->map1[a][b];
+				if (mapmain1[a][b] != 0) {
+
+				Map* newmap = new Map();
+				newmap->Initialize(mapmain1[a][b], a, b, 0);
+				maps.push_back(newmap);
+			}
+			}
+		}
+		for (int a = 0; a < maphigh; a++) {
+		for (int b = 0; b < mapwide; b++) {
+			mapmain2[a][b] = map3->map2[a][b];
+			if (mapmain2[a][b] != 0) {
+
+				Map* newmap = new Map();
+				newmap->Initialize(mapmain2[a][b], a, b, 60);
+				maps.push_back(newmap);
+			}
+			
+		}
+	}
 	
 	
-	
+	} else if(stage>=4){
+	crearflag = true;
 	}
 					
 		
@@ -110,11 +145,21 @@ void Game::Collision() {
 			float dz = abs(player->retunPos().z - map->retunPos().z);
 			if (dz < 4) {
 				if (dx < 3 && dy < 4) {
-					while (dy < 4) {
+			if (player->retunPos().y > map->retunPos().y) {
 
-						player->OnCollision();
-						dy = abs(player->retunPos().y - map->retunPos().y);
-					}
+				while (dy < 4) {
+
+					player->OnCollision();
+					dy = abs(player->retunPos().y - map->retunPos().y);
+				}
+			} else if (player->retunPos().y < map->retunPos().y) {
+			while (dy < 4) {
+
+					player->DCollision();
+					dy = abs(player->retunPos().y - map->retunPos().y);
+				}
+			
+			}
 					if (map->retunA() == 2) {
 						resetFalg = true;
 					}
@@ -142,9 +187,16 @@ void Game::Draw() {
 	for (Map* map : maps) {
 		map->Draw(viewProjection_);
 	}
+	if (!crearflag)
 	player->Draw(viewProjection_);
 }
-void Game::HaikeiDraw() { sprite_->Draw(); }
+void Game::HaikeiDraw() { 
+	sprite_->Draw(); 
+setumeisprite_->Draw();
+	if (crearflag) {
+		crearsprite_->Draw();
+	}
+}
 void Game::MapReset() {
 	maps.remove_if([](Map* map) { 
 		if (map->retunA() != 0) {

@@ -12,6 +12,7 @@ class Map;
 class Player;
 class Map1;
 class Map2;
+class Map3;
 class Game {
 private:
 	std::list<Map*> maps;
@@ -24,9 +25,17 @@ private:
 	uint32_t stage;
 	Map1* map1;
 	Map2* map2;
+	Map3* map3;
 	uint32_t haikei=0;
 	Sprite* sprite_=nullptr;
+	uint32_t setumei=0;
+	Sprite* setumeisprite_=nullptr;
+	Audio* audio_ = nullptr;
 	bool resetFalg;
+	uint32_t soundDataHandle_ = 0;
+	uint32_t crearpng;
+	Sprite* crearsprite_=nullptr;
+	bool crearflag;
 
 public:
 	~Game();

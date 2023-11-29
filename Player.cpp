@@ -15,6 +15,8 @@ void Player::Initialize() {
 	prepos = worldtransform_.translation_;
 	junp = false;
 	geat = false;
+	backpng=TextureManager::Load("carback.png");
+	frontpng=TextureManager::Load("carfront.png");
 }
 void Player::PreMove() {
 
@@ -86,6 +88,14 @@ void Player::OnCollision() {
 	
 
 }
+void Player::DCollision() { 
+	
+	prepos.y -=0.1f;
+	speed_.y = 0;
+	
+	
+
+}
 void Player::LCollision() { 
 
 	prepos.x +=0.1f;
@@ -103,5 +113,13 @@ void Player::PosReset() {
 	prepos = worldtransform_.translation_;
 }
 void Player::Draw(const ViewProjection& viewProjection) {
+	if (!geat&&!Geat)
 	model_->Draw(worldtransform_, viewProjection, textureHandle_);
+	if (geat) {
+	model_->Draw(worldtransform_, viewProjection, backpng);
+	}
+	if (Geat) {
+	model_->Draw(worldtransform_, viewProjection, frontpng);
+	}
+
 }
